@@ -1,0 +1,23 @@
+<div [clrLoading]="loading">
+  <clr-datagrid>
+    <clr-dg-column [style.width.px]="100" [clrDgField]="'dst_short_code'">Short Code</clr-dg-column>
+    <clr-dg-column [clrDgField]="'dst_warehouse_name'">ชื่อคลังสินค้า</clr-dg-column>
+    <clr-dg-column [style.width.px]="100">Min Qty.</clr-dg-column>
+    <clr-dg-column [style.width.px]="100">Max Qty.</clr-dg-column>
+    <clr-dg-column [style.width.px]="100">คงเหลือ</clr-dg-column>
+    <clr-dg-column [style.width.px]="100">หน่วย</clr-dg-column>
+    <clr-dg-placeholder>ไม่พบรายการ</clr-dg-placeholder>
+    <clr-dg-row *clrDgItems="let w of warehouses">
+      <clr-dg-cell>{{w.dst_short_code}}</clr-dg-cell>
+      <clr-dg-cell>{{w.dst_warehouse_name}}</clr-dg-cell>
+      <clr-dg-cell style="text-align: right;">{{w.dst_min_qty | number}}</clr-dg-cell>
+      <clr-dg-cell style="text-align: right;">{{w.dst_max_qty | number}}</clr-dg-cell>
+      <clr-dg-cell style="text-align: right;">{{w.dst_remain_qty | number}}</clr-dg-cell>
+      <clr-dg-cell style="text-align: center;">{{w.unit_name}}</clr-dg-cell>
+    </clr-dg-row>
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} จาก {{pagination.totalItems}} รายการ
+      <clr-dg-pagination #pagination [clrDgPageSize]="5"></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>
