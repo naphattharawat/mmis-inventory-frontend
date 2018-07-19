@@ -137,7 +137,6 @@
     <clr-dg-cell style="text-align: right;">{{ selectedRequisitionQty * selectedSmallQty | number }}</clr-dg-cell>
     <clr-dg-cell style="text-align: right;">
       <span [ngStyle]="{'color: red': selectedRemainQty < (selectedRequisitionQty * selectedSmallQty), 'color: green': selectedRemainQty >= (selectedRequisitionQty * selectedSmallQty)}">{{(selectedRemainQty - (selectedRequisitionQty * selectedSmallQty)) / selectedSmallQty || 0 | number}}</span>
-      <!-- <span style="color: green;" *ngIf=" ">{{selectedRemainQty | number}}</span> -->
     </clr-dg-cell>
 
     <clr-dg-cell>
