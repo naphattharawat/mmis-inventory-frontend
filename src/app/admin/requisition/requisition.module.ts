@@ -21,6 +21,7 @@ import { RequisitionConfirmUnpaidComponent } from 'app/admin/requisition/requisi
 import { RequisitionConfirmEditComponent } from 'app/admin/requisition/requisition-confirm-edit/requisition-confirm-edit.component';
 import { RequisitionComponent } from './requisition.component';
 import { RouterModule } from '@angular/router';
+import { RequisitionFastComponent } from './requisition-fast/requisition-fast.component';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { RouterModule } from '@angular/router';
     RequisitionConfirmComponent,
     RequisitionConfirmUnpaidComponent,
     RequisitionConfirmEditComponent,
+    RequisitionFastComponent,
   ]
 })
 export class RequisitionModule { }

@@ -233,13 +233,13 @@ export class RequisitionConfirmComponent implements OnInit {
 
   async getConfirmItems() {
     try {
-      let rs: any = await this.requisitionService.getOrderConfirmItems(this.confirmId);
+      const rs: any = await this.requisitionService.getOrderConfirmItems(this.confirmId);
       if (rs.ok) {
-        let rows = rs.rows;
+        const rows = rs.rows;
         rows.forEach(v => {
-          let idx = _.findIndex(this.products, { generic_id: v.generic_id });
+          const idx = _.findIndex(this.products, { generic_id: v.generic_id });
           if (idx > -1) {
-            let obj: any = {
+            const obj: any = {
               confirm_qty: v.confirm_qty,
               conversion_qty: v.conversion_qty,
               wm_product_id: v.wm_product_id,
@@ -259,16 +259,13 @@ export class RequisitionConfirmComponent implements OnInit {
   }
 
   async savePay() {
-    let isError = false;
-    let totalQty = 0;
+    const items = [];
+    let totalQty;
 
-    let items = [];
-
-    let generics = [];
-    let _productTotalItems = 0;
+    const generics = [];
 
     this.products.forEach((v: any) => {
-      let objx: any = {};
+      const objx: any = {};
       objx.requisition_qty = v.requisition_qty * v.conversion_qty;
       objx.generic_id = v.generic_id;
       objx.requisition_order_id = v.requisition_order_id;
@@ -277,10 +274,10 @@ export class RequisitionConfirmComponent implements OnInit {
 
       v.confirmItems.forEach((x: any) => {
         totalQty += x.confirm_qty;
-        let _totalConfirmQty = x.confirm_qty * x.conversion_qty;
+        const _totalConfirmQty = x.confirm_qty * x.conversion_qty;
         totalConfirmQty += _totalConfirmQty;
 
-        let obj: any = {
+        const obj: any = {
           confirm_qty: _totalConfirmQty,
           wm_product_id: x.wm_product_id,
           generic_id: v.generic_id
@@ -295,12 +292,14 @@ export class RequisitionConfirmComponent implements OnInit {
 
     let isErrorTotalConfirm = false;
     generics.forEach(v => {
-      if (v.total_confirm_qty < v.requisition_qty) isErrorTotalConfirm = true;
+      if (v.total_confirm_qty < v.requisition_qty) {
+        isErrorTotalConfirm = true;
+      }
     })
 
-    let isErrorItems = _.uniqBy(items, 'generic_id').length < generics.length;
+    const isErrorItems = _.uniqBy(items, 'generic_id').length < generics.length;
 
-    let data: any = {};
+    const data: any = {};
     data.items = items;
     data.generics = generics;
 

@@ -1,3 +1,4 @@
+import { RequisitionFastComponent } from './requisition/requisition-fast/requisition-fast.component';
 import { AdditionEditComponent } from './addition-edit/addition-edit.component';
 import { AdditionComponent } from './addition/addition.component';
 import { CalculateMinMaxComponent } from './calculate-min-max/calculate-min-max.component';
@@ -36,7 +37,7 @@ import { WarehouseProductsDetailComponent } from './warehouse-products-detail/wa
 
 // common page
 import { AlertExpiredComponent } from './alert-expired/alert-expired.component';
-import { RequisitionComponent } from './requisition/requisition.component';
+// import { RequisitionComponent } from './requisition/requisition.component';
 import { UnitissueComponent } from './unitissue/unitissue.component';
 import { ReturningComponent } from './returning/returning.component';
 
@@ -93,6 +94,7 @@ import { RequisitionTemplateComponent } from 'app/admin/requisition/requisition-
 import { RequisitionTemplateNewComponent } from 'app/admin/requisition/requisition-template-new/requisition-template-new.component';
 import { RequisitionTemplateEditComponent } from 'app/admin/requisition/requisition-template-edit/requisition-template-edit.component';
 
+import { RequisitionComponent } from 'app/admin/requisition/requisition.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -100,6 +102,7 @@ const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
+      { path: 'requisition', redirectTo: 'requisition', pathMatch: 'full' },
       { path: 'main', component: MainPageComponent },
       { path: 'warehouse', canActivate: [AuthWarehouseManagement], component: WarehouseComponent },
       { path: 'warehouse/detail', canActivate: [AuthWarehouseManagement], component: WarehouseDetailComponent },
@@ -114,18 +117,36 @@ const routes: Routes = [
       { path: 'receives/other', canActivate: [AuthReceive], component: ReceiveOtherComponent },
       { path: 'receives/other/edit', canActivate: [AuthReceive], component: ReceiveOtherEditComponent },
       { path: 'receives/edit', canActivate: [AuthReceive], component: ReceiveEditComponent },
-      { path: 'requisition', canActivate: [AuthRequisition], component: RequisitionComponent },
+      {
+        path: 'requisition',
+        canActivate: [AdminGuard],
+        children: [
+          { path: '', redirectTo: 'main', pathMatch: 'full' },
+          { path: 'main', canActivate: [AuthRequisition], component: RequisitionComponent },
+          { path: 'new', canActivate: [AuthRequisition], component: RequisitionNewComponent },
+          { path: 'type', component: RequisitionTypeComponent },
+          { path: 'new', canActivate: [AuthRequisition], component: RequisitionNewComponent },
+          { path: 'edit/:requisitionId', canActivate: [AuthRequisition], component: RequisitionNewComponent },
+          { path: 'confirm', canActivate: [AuthRequisition], component: RequisitionConfirmComponent },
+          { path: 'confirm/edit', canActivate: [AuthRequisition], component: RequisitionConfirmEditComponent },
+          { path: 'confirm-unpaid', canActivate: [AuthRequisition], component: RequisitionConfirmUnpaidComponent },
+          { path: 'templates', canActivate: [AuthRequisition], component: RequisitionTemplateComponent },
+          { path: 'templates/new', canActivate: [AuthRequisition], component: RequisitionTemplateNewComponent },
+          { path: 'templates/edit/:templateId', canActivate: [AuthRequisition], component: RequisitionTemplateEditComponent },
+          { path: 'fast', canActivate: [AuthRequisition], component: RequisitionFastComponent },
+        ]
+      },
       { path: 'requisition-type', component: RequisitionTypeComponent },
       { path: 'transection-type', component: TransectionTypeComponent },
       { path: 'receiveother-type', component: ReceiveotherTypeComponent },
-      { path: 'requisition/new', canActivate: [AuthRequisition], component: RequisitionNewComponent },
-      { path: 'requisition/edit/:requisitionId', canActivate: [AuthRequisition], component: RequisitionNewComponent },
-      { path: 'requisition/confirm', canActivate: [AuthRequisition], component: RequisitionConfirmComponent },
-      { path: 'requisition/confirm/edit', canActivate: [AuthRequisition], component: RequisitionConfirmEditComponent },
-      { path: 'requisition/confirm-unpaid', canActivate: [AuthRequisition], component: RequisitionConfirmUnpaidComponent },
-      { path: 'requisition-templates', canActivate: [AuthRequisition], component: RequisitionTemplateComponent },
-      { path: 'requisition-templates/new', canActivate: [AuthRequisition], component: RequisitionTemplateNewComponent },
-      { path: 'requisition-templates/edit/:templateId', canActivate: [AuthRequisition], component: RequisitionTemplateEditComponent },
+      // { path: 'requisition/new', canActivate: [AuthRequisition], component: RequisitionNewComponent },
+      // { path: 'requisition/edit/:requisitionId', canActivate: [AuthRequisition], component: RequisitionNewComponent },
+      // { path: 'requisition/confirm', canActivate: [AuthRequisition], component: RequisitionConfirmComponent },
+      // { path: 'requisition/confirm/edit', canActivate: [AuthRequisition], component: RequisitionConfirmEditComponent },
+      // { path: 'requisition/confirm-unpaid', canActivate: [AuthRequisition], component: RequisitionConfirmUnpaidComponent },
+      // { path: 'requisition-templates', canActivate: [AuthRequisition], component: RequisitionTemplateComponent },
+      // { path: 'requisition-templates/new', canActivate: [AuthRequisition], component: RequisitionTemplateNewComponent },
+      // { path: 'requisition-templates/edit/:templateId', canActivate: [AuthRequisition], component: RequisitionTemplateEditComponent },
       { path: 'borrow/returning/:borrowId', component: ReturningComponent },
       { path: 'alert-expired', component: AlertExpiredComponent },
       { path: 'unitissue', component: UnitissueComponent },
