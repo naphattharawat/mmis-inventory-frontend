@@ -283,6 +283,7 @@ export class RequisitionConfirmComponent implements OnInit {
           generic_id: v.generic_id
         }
 
+
         items.push(obj);
       });
 
