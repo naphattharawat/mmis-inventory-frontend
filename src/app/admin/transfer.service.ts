@@ -11,15 +11,11 @@ export class TransferService {
     private authHttp: AuthHttp
   ) { }
 
-  async getWarehouseLocations(warehouseId: string) {
-    const rs: any = await this.authHttp.get(`${this.url}/locations/${warehouseId}`).toPromise();
-    return rs.json();
-  }
-
   async getSummaryInfo(transferId: string) {
     const rs: any = await this.authHttp.get(`${this.url}/transfer/info-summary/${transferId}`).toPromise();
     return rs.json();
   }
+
   async checkApprove(username: any, password: any, action: any) {
     const rs: any = await this.authHttp.post(`${this.url}/basic/checkApprove`, {
       username: username,
@@ -28,6 +24,7 @@ export class TransferService {
     }).toPromise();
     return rs.json();
   }
+
   async getDetailInfo(transferId: string) {
     const rs: any = await this.authHttp.get(`${this.url}/transfer/info-detail/${transferId}`).toPromise();
     return rs.json();
@@ -38,32 +35,6 @@ export class TransferService {
     return rs.json();
   }
 
-  getProductsWarehouse(warehouseId: string) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/transfer/product-warehouse/${warehouseId}`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
-  }
-
-  getProductForTransfer(productId: string, warehouseId: string) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.post(`${this.url}/transfer/product-transfer`, {
-        productId: productId,
-        warehouseId: warehouseId
-      })
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
-  }
 
   async saveTransfer(summary: Object, generics: any[]) {
     const rs: any = await this.authHttp.post(`${this.url}/transfer/save`, {

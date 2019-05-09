@@ -1,7 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { SelectLotsComponent } from './select-lots/select-lots.component';
 import { SelectUnitsComponent } from './select-units/select-units.component';
 import { SelectVendorComponent } from './select-vendor/select-vendor.component';
 
@@ -25,7 +24,6 @@ import { ModalFileUploadComponent } from './modal-file-upload/modal-file-upload.
 import { SelectWarehousesComponent } from './select-warehouses/select-warehouses.component';
 import { SearchProductWarehouseComponent } from './search-product-warehouse/search-product-warehouse.component';
 import { ModalsModule } from 'app/modals/modals.module';
-import { SelectLotsComponent } from 'app/directives/select-lots/select-lots.component';
 import { ViewReceiveApproveComponent } from './view-receive-approve/view-receive-approve.component';
 import { RemainProductsWarehouseComponent } from './remain-products-warehouse/remain-products-warehouse.component';
 import { SearchDonatorComponent } from 'app/directives/search-donator/search-donator.component';
@@ -80,7 +78,6 @@ import { SelectGenericTypeMultiComponent } from './select-generic-type-multi/sel
         SelectWarehousesComponent,
         SearchProductWarehouseComponent,
         SearchGenericAutocompleteComponent,
-        SelectLotsComponent,
         ViewReceiveApproveComponent,
         RemainProductsWarehouseComponent,
         SearchDonatorComponent,
@@ -104,7 +101,6 @@ import { SelectGenericTypeMultiComponent } from './select-generic-type-multi/sel
     ],
     providers: [BasicService],
     exports: [
-        // SelectLotsComponent,
         SelectUnitsComponent,
         SelectVendorComponent,
         SelectReceiveLotsComponent,
@@ -123,7 +119,6 @@ import { SelectGenericTypeMultiComponent } from './select-generic-type-multi/sel
         SelectWarehousesComponent,
         SearchProductWarehouseComponent,
         SearchGenericAutocompleteComponent,
-        SelectLotsComponent,
         ViewReceiveApproveComponent,
         RemainProductsWarehouseComponent,
         SearchDonatorComponent,

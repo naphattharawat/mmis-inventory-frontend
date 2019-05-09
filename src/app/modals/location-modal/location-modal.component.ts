@@ -1,9 +1,5 @@
-import { UsersService } from './../../users.service';
 import { AlertService } from './../../alert.service';
 import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { LotService } from 'app/admin/lot.service';
-import { DateService } from 'app/date.service';
-import * as moment from 'moment';
 import { LocationService } from 'app/admin/location.service';
 
 @Component({
@@ -28,8 +24,8 @@ export class LocationModalComponent implements OnInit {
 
   isActive = false;
   isUpdate = false;
-  
-  open: boolean = false;
+
+  open = false;
 
   constructor(
     private locationService: LocationService,
@@ -139,7 +135,7 @@ export class LocationModalComponent implements OnInit {
           });
       })
       .catch(() => {
-      // no action
+        // no action
       });
   }
 

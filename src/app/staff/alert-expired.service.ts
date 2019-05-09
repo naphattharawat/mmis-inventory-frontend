@@ -136,10 +136,6 @@ export class AlertExpiredService {
     });
   }
 
-  async getGenericType() {
-    const resp = await this.authHttp.get(`${this.url}/generics/types`).toPromise();
-    return resp.json();
-  }
 
   getProductExpired(genericType, warehouseId, query) {
     return new Promise((resolve, reject) => {

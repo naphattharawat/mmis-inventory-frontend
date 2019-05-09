@@ -4,8 +4,6 @@ import { LayoutComponent } from './layout/layout.component';
 
 // common page
 import { AlertExpiredComponent } from './alert-expired/alert-expired.component';
-import { UnitissueComponent } from './unitissue/unitissue.component';
-import { ReturningComponent } from './returning/returning.component';
 
 // reports
 import { ReportComponent } from './report/report.component';
@@ -111,8 +109,6 @@ import { WarehouseProductPlanningComponent } from 'app/admin/warehouse-product-p
 import { WarehouseTypeComponent } from 'app/admin/warehouse-type/warehouse-type.component';
 import { WarehouseComponent } from 'app/admin/warehouse/warehouse.component';
 import { WarehouseDetailComponent } from 'app/admin/warehouse-detail/warehouse-detail.component';
-import { WarehouseProductsComponent } from 'app/admin/warehouse-products/warehouse-products.component';
-import { WarehouseProductsDetailComponent } from 'app/admin/warehouse-products-detail/warehouse-products-detail.component';
 import { BorrowotherNewComponent } from './borrowother-new/borrowother-new.component';
 import { BorrowotherEditComponent } from './borrowother-edit/borrowother-edit.component';
 import { ReturnedComponent } from './returned/returned.component';
@@ -150,9 +146,7 @@ const routes: Routes = [
       { path: 'transection-type', component: TransectionTypeComponent },
       { path: 'requisition-type', component: RequisitionTypeComponent },
       { path: 'receiveother-type', component: ReceiveotherTypeComponent },
-      { path: 'borrow/returning/:borrowId', component: ReturningComponent },
       { path: 'alert-expired', component: AlertExpiredComponent },
-      { path: 'unitissue', component: UnitissueComponent },
       { path: 'exportdata', component: ExportdataComponent },
       { path: 'return-product/new', component: ReturnedComponent },
       { path: 'return-product/edit', component: ReturnedEditComponent },
@@ -183,8 +177,6 @@ const routes: Routes = [
       { path: 'transfer', canActivate: [AuthTransfer], component: TransferComponent },
       { path: 'transfer/new', canActivate: [AuthTransfer], component: TransferNewComponent },
       { path: 'transfer/edit', canActivate: [AuthTransfer], component: TransferEditComponent },
-      { path: 'warehouse-products', component: WarehouseProductsComponent },
-      { path: 'warehouse-products/details/:warehouseId', component: WarehouseProductsDetailComponent },
       { path: 'code-mapping', component: CodeMappingComponent },
       { path: 'donators', component: DonatorsComponent },
       { path: 'products', component: ProductsComponent },
@@ -253,9 +245,6 @@ const routes: Routes = [
           { path: 'confirm', canActivate: [AuthRequisition], component: RequisitionConfirmComponent },
           { path: 'confirm/edit', canActivate: [AuthRequisition], component: RequisitionConfirmEditComponent },
           { path: 'confirm-unpaid', canActivate: [AuthRequisition], component: RequisitionConfirmUnpaidComponent },
-          // { path: 'templates', component: RequisitionTemplateComponent },
-          // { path: 'templates/new', component: RequisitionTemplateNewComponent },
-          // { path: 'templates/edit/:templateId', component: RequisitionTemplateEditComponent },
           { path: 'fast', canActivate: [AuthRequisition], component: RequisitionFastComponent },
           { path: 'multiple', canActivate: [AuthRequisition], component: RequisitionMultipleComponent },
         ]

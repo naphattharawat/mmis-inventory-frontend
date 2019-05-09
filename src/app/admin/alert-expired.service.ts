@@ -25,18 +25,6 @@ export class AlertExpiredService {
     });
   }
 
-  getSelectGenerics(id: any) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/alert-expired/genericSelec?id=${id}`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
-  }
-
   getUnsetProducts(genericType, query) {
     return new Promise((resolve, reject) => {
       this.authHttp.post(`${this.url}/alert-expired/products/unset`, {
@@ -80,52 +68,6 @@ export class AlertExpiredService {
           reject(error);
         });
     });
-  }
-
-  // saveStatus(status: string) {
-  //   return new Promise((resolve, reject) => {
-  //     this.authHttp.post(`${this.url}/alert-expired/save-status`, {
-  //       status: status
-  //     })
-  //       .map(res => res.json())
-  //       .subscribe(data => {
-  //         resolve(data);
-  //       }, error => {
-  //         reject(error);
-  //       });
-  //   });
-  // }
-
-  // getStatus() {
-  //   return new Promise((resolve, reject) => {
-  //     this.authHttp.get(`${this.url}/alert-expired/get-status`)
-  //       .map(res => res.json())
-  //       .subscribe(data => {
-  //         resolve(data);
-  //       }, error => {
-  //         reject(error);
-  //       });
-  //   });
-  // }
-
-  validate(productId: string, lotId: string) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.post(`${this.url}/alert-expired/validate`, {
-        productId: productId,
-        lotId: lotId
-      })
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
-  }
-
-  async getGenericType() {
-    const resp = await this.authHttp.get(`${this.url}/generics/types`).toPromise();
-    return resp.json();
   }
 
   getProductExpired(genericType, warehouseId, query) {

@@ -10,7 +10,7 @@ export class DonatorService {
     private authHttp: AuthHttp
   ) { }
 
-  async all(query:any) {
+  async all(query: any) {
     const resp = await this.authHttp.get(`${this.url}/donators?query=${query}`).toPromise();
     return resp.json();
   }
@@ -39,5 +39,4 @@ export class DonatorService {
     const resp = await this.authHttp.delete(`${this.url}/donators/${donatorId}`).toPromise();
     return resp.json();
   }
-
 }

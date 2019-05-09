@@ -64,7 +64,6 @@ export class MainComponent implements OnInit {
     if (!this.warehouseId) {
       this.alertService.error('ไม่พบรหัสคลังสินค้า');
     } else {
-      await this.getGenericType();
       this.getProducts();
       this.getGenerics();
     }
@@ -221,29 +220,6 @@ export class MainComponent implements OnInit {
       this.getProducts();
     }
     this.openModalAdjust = false;
-  }
-
-  getStockCard(p) {
-
-  }
-
-  async getGenericType() {
-    try {
-      this.modalLoading.show();
-      const rs = await this.staffService.getGenericType();
-      if (rs.ok) {
-        this.genericTypes = rs.rows;
-        this.genericType = rs.rows.length === 1 ? rs.rows[0].generic_type_id : "";
-      } else {
-        this.alertService.error(rs.error);
-      }
-
-      this.modalLoading.hide();
-    } catch (error) {
-      this.modalLoading.hide();
-      console.log(error);
-      this.alertService.serverError();
-    }
   }
 
   async deleteGeneric(genericId) {

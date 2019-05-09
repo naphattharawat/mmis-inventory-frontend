@@ -4,16 +4,13 @@ import { JwtHelper } from 'angular2-jwt';
 import { ToThaiDatePipe } from './../../helper/to-thai-date.pipe';
 import { Component, OnInit, ChangeDetectorRef, ViewChild, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { WarehouseService } from "../warehouse.service";
 import { ReceiveService } from "../receive.service";
-import { LabelerService } from "../labeler.service";
 import { AlertService } from "../../alert.service";
 import { IMyOptions } from 'mydatepicker-th';
 
 import 'rxjs/add/operator/filter';
 
 import * as _ from 'lodash';
-import * as numeral from 'numeral';
 import * as moment from 'moment';
 import { DateService } from 'app/date.service';
 
@@ -152,9 +149,7 @@ export class ReceiveEditComponent implements OnInit {
   // numDayExpired: number;
   receiveExpired: any;
   constructor(
-    private wareHouseService: WarehouseService,
     private receiveService: ReceiveService,
-    private labelerService: LabelerService,
     private alertService: AlertService,
     private router: Router,
     // private ref: ChangeDetectorRef,

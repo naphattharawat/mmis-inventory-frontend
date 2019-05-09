@@ -1,41 +1,14 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectorRef,
-  Inject,
-  ViewChild
-} from '@angular/core';
-// import { Router } from '@angular/router';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { WarehouseService } from "../warehouse.service";
-import { ReceiveService } from "../receive.service";
 import { RequisitionTypeService } from "../requisition-type.service";
 import { RequisitionService } from "../requisition.service";
-import { UnitissueService } from "../unitissue.service";
-import { LabelerService } from "../labeler.service";
 import { AlertService } from "../../alert.service";
-
-import { ProductlotsService } from "../productlots.service";
 import { IMyOptions } from 'mydatepicker-th';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { PeriodService } from '../../period.service';
-
-// import { LotService } from '../lot.service';
-
-import { Headers } from '@angular/http';
-
-
-import { IProductReceive, IReceive, IRequisition, IRequisitionStructure, IProductRequisition } from "../../models";
-
 import * as _ from 'lodash';
-import * as numeral from 'numeral';
 import * as moment from 'moment';
-
-import { WarehouseProductsService } from './../warehouse-products.service';
-import { ProductsService } from './../../admin/products.service';
 import { JwtHelper } from 'angular2-jwt';
 
-import { AlertExpiredService } from './../alert-expired.service';
-import { ToThaiDatePipe } from './../../helper/to-thai-date.pipe';
 import { SearchGenericAutocompleteComponent } from 'app/directives/search-generic-autocomplete/search-generic-autocomplete.component';
 import { IGeneric, IUnit, IRequisitionOrderItem, IRequisitionOrder } from 'app/shared';
 import { SelectReceiveUnitComponent } from 'app/directives/select-receive-unit/select-receive-unit.component';
@@ -102,15 +75,12 @@ export class RequisitionNewComponent implements OnInit {
 
   constructor(
     private wareHouseService: WarehouseService,
-    private productService: ProductsService,
     private alertService: AlertService,
     private requisitionService: RequisitionService,
     private requisitionTypeService: RequisitionTypeService,
     private route: ActivatedRoute,
     private router: Router,
-    private warehouseProductService: WarehouseProductsService,
-    @Inject('API_URL') private apiUrl: string,
-    private periodService: PeriodService
+    @Inject('API_URL') private apiUrl: string
   ) {
     this.requisitionId = this.route.snapshot.params['requisitionId'];
     const token = sessionStorage.getItem('token');

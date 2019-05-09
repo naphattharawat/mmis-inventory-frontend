@@ -10,41 +10,24 @@ export class PickService {
     private authHttp: AuthHttp
   ) { }
 
-  getList(limit: number, offset: number) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/pick/getList/${limit}/${offset}`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
+
+  async getList(limit: number, offset: number) {
+    const rs: any = await this.authHttp.get(`${this.url}/pick/getList/${limit}/${offset}`).toPromise();
+    return rs.json();
   }
-  removePick(pick_id) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.delete(`${this.url}/pick/removePick/${pick_id}`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
+
+  async removePick(pickId: any) {
+    const rs: any = await this.authHttp.delete(`${this.url}/pick/removePick/${pickId}`).toPromise();
+    return rs.json();
   }
-  approvePick(pick_id) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.post(`${this.url}/pick/approvePick`, {
-        pick_id: pick_id
-      })
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
+
+  async approvePick(pickId: any) {
+    const rs: any = await this.authHttp.post(`${this.url}/pick/approve`, {
+      pickId: pickId
+    }).toPromise();
+    return rs.json();
   }
+
   async checkEdit(username: any, password: any, action: any) {
     const rs: any = await this.authHttp.post(`${this.url}/basic/checkApprove`, {
       username: username,
@@ -53,77 +36,37 @@ export class PickService {
     }).toPromise();
     return rs.json();
   }
-  savePick(pickId: any, pickDate: any, wmPick: any, products: any, peopleId: any, remark: any) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.put(`${this.url}/pick/savePick`, {
-        pickDate: pickDate,
-        wmPick: wmPick,
-        products: products,
-        people_id: peopleId,
-        remark: remark,
-        pickId: pickId
-      })
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
+
+  async savePick(pickId: any, pickDate: any, wmPick: any, products: any, peopleId: any, remark: any) {
+    const rs: any = await this.authHttp.put(`${this.url}/pick/savePick`, {
+      pickDate: pickDate,
+      wmPick: wmPick,
+      products: products,
+      people_id: peopleId,
+      remark: remark,
+      pickId: pickId
+    }).toPromise();
+    return rs.json();
   }
-  getPickEdit(pickId: any) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/pick/getPickEdit/${pickId}`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
+
+  async getPickEdit(pickId: any) {
+    const rs: any = await this.authHttp.get(`${this.url}/pick/getPickEdit/${pickId}`).toPromise();
+    return rs.json();
   }
-  getPick(pickId: any) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/pick/getPick/${pickId}`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
+
+  async getPick(pickId: any) {
+    const rs: any = await this.authHttp.get(`${this.url}/pick/getPick/${pickId}`).toPromise();
+    return rs.json();
   }
-  gerProductReceiveNotPO(query: any) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/pick/gerProductReceiveNotPO?query=${query}`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
+
+  async gerProductReceiveNotPO(query: any) {
+    const rs: any = await this.authHttp.get(`${this.url}/pick/gerProductReceiveNotPO?query=${query}`).toPromise();
+    return rs.json();
   }
-  gerReceiveItem(receiveId: any) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/pick/gerReceiveItem?receiveId=${receiveId}`).map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
-  }
-  getDetail(pickId: any) {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/pick/getDetail/${pickId}`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
+
+  async getDetail(pickId: any) {
+    const rs: any = await this.authHttp.get(`${this.url}/pick/getDetail/${pickId}`).toPromise();
+    return rs.json();
   }
 
 }

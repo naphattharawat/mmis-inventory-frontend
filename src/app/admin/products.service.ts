@@ -33,7 +33,7 @@ export class ProductsService {
   }
 
   async getProductStockDetail(productId: any, warehouseId: any) {
-    const resp = await this.authHttp.get(`${this.url}/products/stock/remain/${productId}/${warehouseId}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/stock/remain?productId=${productId}&warehouseId${warehouseId}`).toPromise();
     return resp.json();
   }
   async saveRepack(product: any) {
@@ -45,7 +45,7 @@ export class ProductsService {
 
 
   async getProductStockRemain(genericId: any) {
-    const resp = await this.authHttp.get(`${this.url}/products/stock/remain/generic/${genericId}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/stock/remain/generic?genericId=${genericId}`).toPromise();
     return resp.json();
   }
 
@@ -77,25 +77,25 @@ export class ProductsService {
   }
 
   async getProductWarehouse(srcwarehouseId: any, dstwarehouseId) {
-    const resp = await this.authHttp.get(`${this.url}/products/getallproductinwarehouse/${srcwarehouseId}/${dstwarehouseId}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/getallproductinwarehouse?srcwarehouseId=${srcwarehouseId}&dstwarehouseId=${dstwarehouseId}`).toPromise();
     return resp.json();
   }
 
   async searchAllProducts(query: any) {
-    const resp = await this.authHttp.get(`${this.url}/products/searchallproduct/${query}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/search?query=${query}`).toPromise();
     return resp.json();
   }
 
   async getProductsInTemplate(templateId: any) {
-    const resp = await this.authHttp.get(`${this.url}/products/getallproductintemplate/${templateId}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/template?templateId=${templateId}`).toPromise();
     return resp.json();
   }
   async getProductsInTemplateIssue(templateId: any) {
-    const resp = await this.authHttp.get(`${this.url}/products/getallproductintemplate-issue/${templateId}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/template/issue?templateId=${templateId}`).toPromise();
     return resp.json();
   }
   async getWarehouseProductRemain(warehouseId: any, productId: any) {
-    const resp = await this.authHttp.get(`${this.url}/products/getwarehouseproductremain/${warehouseId}/${productId}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/remain/warehouse/detail?warehouseId=${warehouseId}&productId=${productId}`).toPromise();
     return resp.json();
   }
 
@@ -110,7 +110,7 @@ export class ProductsService {
   }
 
   async getSearchProduct(query: any) {
-    const resp = await this.authHttp.get(`${this.url}/products/mapping/search-product/${query}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/mapping/search-product?query=${query}`).toPromise();
     return resp.json();
   }
 

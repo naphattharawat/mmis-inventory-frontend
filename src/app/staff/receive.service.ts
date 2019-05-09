@@ -15,15 +15,15 @@ export class ReceiveService {
 
   // get conversion
   async getUnitConversion(genericId: any) {
-    const response = await this.authHttp.get(`${this.url}/products/unit-conversion/${genericId}`)
+    const response = await this.authHttp.get(`${this.url}/products/unit-conversion?genericId=${genericId}`)
       .toPromise();
     return response.json();
   }
-  async getLastLocation(warehouseId,productId:any){
+  async getLastLocation(warehouseId, productId: any) {
     const res = await this.authHttp.get(`${this.url}/receives/purchases/get-last-location-other?productId=${productId}&warehouseId=${warehouseId}`)
-    .toPromise();
-  return res.json();
-   }
+      .toPromise();
+    return res.json();
+  }
   searchProduct(query: string) {
     return new Promise((resolve, reject) => {
       this.authHttp.post(`${this.url}/staffreceive/search`, {

@@ -29,10 +29,8 @@ import { ReceiveService } from "./receive.service";
 import { LabelerService } from "./labeler.service";
 import { RequisitionTypeService } from "./requisition-type.service";
 import { RequisitionService } from "./requisition.service";
-import { UnitissueService } from "./unitissue.service";
 import { AlertExpiredService } from './alert-expired.service';
 import { ProductlotsService } from "./productlots.service";
-import { BorrowService } from './borrow.service';
 import { UploadingService } from './../uploading.service';
 import { IssueService } from './issue.service';
 import { CountingComponent } from './counting/counting.component';
@@ -158,12 +156,10 @@ import { AlertExpiredComponent } from './alert-expired/alert-expired.component';
     LabelerService,
     RequisitionTypeService,
     RequisitionService,
-    UnitissueService,
     ProductlotsService,
     ToThaiDatePipe,
     AlertExpiredService,
     WarehouseProductsService,
-    BorrowService,
     UploadingService,
     IssueService,
     TransferService,

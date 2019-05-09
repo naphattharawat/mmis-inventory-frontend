@@ -382,10 +382,6 @@ export class StaffService {
     });
   }
 
-  async getGenericType() {
-    const resp = await this.authHttp.get(`${this.url}/generics/types`).toPromise();
-    return resp.json();
-  }
   async getProductAll(query, genericTypes) {
     const resp = await this.authHttp.post(`${this.url}/staff/products/all`,
       { query: query, genericTypes: genericTypes }).toPromise();

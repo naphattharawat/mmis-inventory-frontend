@@ -7,16 +7,11 @@ import {
 } from '@angular/core';
 // import { Router } from '@angular/router';
 import { WarehouseService } from "../warehouse.service";
-import { ReceiveService } from "../receive.service";
 import { RequisitionTypeService } from "../requisition-type.service";
 import { RequisitionService } from "../requisition.service";
-import { UnitissueService } from "../unitissue.service";
-import { LabelerService } from "../labeler.service";
 import { AlertService } from "../../alert.service";
-import { ProductlotsService } from "../productlots.service";
 import { IMyOptions } from 'mydatepicker-th';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Headers } from '@angular/http';
 
 
 import { IProductReceive, IReceive, IRequisition, IRequisitionStructure, IProductRequisition } from "../../models";
@@ -29,8 +24,6 @@ import { WarehouseProductsService } from './../warehouse-products.service';
 import { ProductsService } from './../../staff/products.service';
 import { JwtHelper } from 'angular2-jwt';
 
-import { AlertExpiredService } from './../alert-expired.service';
-import { ToThaiDatePipe } from './../../helper/to-thai-date.pipe';
 import { SearchGenericAutocompleteComponent } from 'app/directives/search-generic-autocomplete/search-generic-autocomplete.component';
 import { IGeneric, IUnit, IRequisitionOrderItem, IRequisitionOrder } from 'app/shared';
 import { SelectReceiveUnitComponent } from 'app/directives/select-receive-unit/select-receive-unit.component';

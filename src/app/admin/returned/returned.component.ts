@@ -1,20 +1,14 @@
 import { PeriodService } from './../../period.service';
 import { JwtHelper } from 'angular2-jwt';
 import * as _ from 'lodash';
-import * as numeral from 'numeral';
 import * as moment from 'moment';
 
-import { AlertExpiredService } from './../alert-expired.service';
-import { ToThaiDatePipe } from './../../helper/to-thai-date.pipe';
 import { Component, OnInit, ChangeDetectorRef, ViewChild, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { WarehouseService } from "../warehouse.service";
 import { ReceiveService } from "../receive.service";
-import { LabelerService } from "../labeler.service";
 import { AlertService } from "../../alert.service";
 import { BorrowItemsService } from "../borrow-items.service"
 import { IMyOptions } from 'mydatepicker-th';
-import { DateService } from 'app/date.service';
 
 @Component({
   selector: 'wm-returned',
@@ -144,16 +138,10 @@ export class ReturnedComponent implements OnInit {
 
 
   constructor(
-    private wareHouseService: WarehouseService,
     private receiveService: ReceiveService,
-    private labelerService: LabelerService,
     private alertService: AlertService,
     private router: Router,
-    // private ref: ChangeDetectorRef,
-    private toThaiDate: ToThaiDatePipe,
-    private alertExpireService: AlertExpiredService,
     @Inject('API_URL') private apiUrl: string,
-    private daetService: DateService,
     private route: ActivatedRoute,
     private borrowItemsService: BorrowItemsService,
     private periodService: PeriodService
@@ -697,7 +685,7 @@ export class ReturnedComponent implements OnInit {
       if (rs.ok) {
         this.borrow = rs.rows;
         // console.log(this.borrow);
-        
+
       } else {
         this.alertService.error(JSON.stringify(rs.error));
       }
@@ -715,7 +703,7 @@ export class ReturnedComponent implements OnInit {
       if (rs.ok) {
         this.borrowOther = rs.rows;
         // console.log(this.borrowOther);
-        
+
       } else {
         this.alertService.error(JSON.stringify(rs.error));
       }

@@ -47,10 +47,7 @@ export class WarehouseService {
     return rs.json();
   }
 
-  async getStaffMappings() {
-    const rs: any = await this.authHttp.get(`${this.url}/warehouses/get-staff-mappings`).toPromise();
-    return rs.json();
-  }
+
   async getSearchStaffMappings(query: any, genericType: any) {
     const rs: any = await this.authHttp.post(`${this.url}/warehouses/get-staff-mappings/search`, {
       query: query,
@@ -72,17 +69,6 @@ export class WarehouseService {
     return rs.json();
   }
 
-  getWarehouseProduct() {
-    return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/warehouses/listall`)
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, error => {
-          reject(error);
-        });
-    });
-  }
 
   saveMapping(mmis: any, his: any, conversion: any) {
     return new Promise((resolve, reject) => {
@@ -262,9 +248,9 @@ export class WarehouseService {
     });
   }
 
-  getProductsDetail(productNewId: string) {
+  getProductsDetail(wmProductId: string) {
     return new Promise((resolve, reject) => {
-      this.authHttp.get(`${this.url}/products/full-detail/${productNewId}`)
+      this.authHttp.get(`${this.url}/products/full-detail?wmProductId=${wmProductId}`)
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);

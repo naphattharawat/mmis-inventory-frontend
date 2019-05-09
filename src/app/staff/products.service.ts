@@ -41,7 +41,7 @@ export class ProductsService {
   }
 
   async getProductWarehouse(srcwarehouseId, dstwarehouseId) {
-    const resp = await this.authHttp.get(`${this.url}/products/getallproductinwarehouse/${srcwarehouseId}/${dstwarehouseId}`).toPromise();
+    const resp = await this.authHttp.get(`${this.url}/products/getallproductinwarehouse?srcwarehouseId=${srcwarehouseId}&dstwarehouseId=${dstwarehouseId}`).toPromise();
     return resp.json();
   }
 

@@ -1,19 +1,14 @@
-import { AdjustStockService } from './../../adjust-stock.service';
 import { ToolsService } from './../../tools.service';
 import { PeriodService } from 'app/period.service';
 import { JwtHelper } from 'angular2-jwt';
-import { ToThaiDatePipe } from 'app/helper/to-thai-date.pipe';
 import { Component, OnInit, ChangeDetectorRef, ViewChild, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { WarehouseService } from "app/admin/warehouse.service";
 import { ReceiveService } from "app/admin/receive.service";
-import { LabelerService } from "app/admin/labeler.service";
 import { AlertService } from "app/alert.service";
 import { IMyOptions } from 'mydatepicker-th';
 import 'rxjs/add/operator/filter';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { DateService } from 'app/date.service';
 
 
 @Component({
@@ -152,19 +147,14 @@ export class StockcardReceiveComponent implements OnInit {
   passwordModal = false;
   checkEnterPass = true;
   constructor(
-    private wareHouseService: WarehouseService,
     private receiveService: ReceiveService,
-    private labelerService: LabelerService,
     private alertService: AlertService,
     private router: Router,
-    private toThaiDate: ToThaiDatePipe,
     private route: ActivatedRoute,
     @Inject('API_URL') private apiUrl: string,
     @Inject('REV_PREFIX') public docPrefix: string,
-    private dateService: DateService,
     private periodService: PeriodService,
     private toolsService: ToolsService,
-    private adjustStockService: AdjustStockService
   ) {
     this.token = sessionStorage.getItem('token');
     const decodedToken: any = this.jwtHelper.decodeToken(this.token);

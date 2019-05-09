@@ -1,16 +1,13 @@
 import { PeriodService } from './../../period.service';
 import { JwtHelper } from 'angular2-jwt';
-import * as _ from 'lodash';
-import * as numeral from 'numeral';
+import * as _ from 'lodash';;
 import * as moment from 'moment';
 
 import { AlertExpiredService } from './../alert-expired.service';
 import { ToThaiDatePipe } from './../../helper/to-thai-date.pipe';
 import { Component, OnInit, ChangeDetectorRef, ViewChild, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { WarehouseService } from "../warehouse.service";
 import { ReceiveService } from "../receive.service";
-import { LabelerService } from "../labeler.service";
 import { AlertService } from "../../alert.service";
 import { IMyOptions } from 'mydatepicker-th';
 import { DateService } from 'app/date.service';
@@ -24,7 +21,6 @@ export class ReceivePurchaseComponent implements OnInit {
   @ViewChild('lotModal') public lotModal: any;
   @ViewChild('packageModal') public packageModal: any;
   @ViewChild('manufactureList') public manufactureList: any;
-  // @ViewChild('lotList') public lotList: any;
   @ViewChild('warehouseList') public warehouseList: any;
   @ViewChild('locationList') public locationList: any;
 
@@ -139,9 +135,7 @@ export class ReceivePurchaseComponent implements OnInit {
   asn: any;
 
   constructor(
-    private wareHouseService: WarehouseService,
     private receiveService: ReceiveService,
-    private labelerService: LabelerService,
     private alertService: AlertService,
     private router: Router,
     // private ref: ChangeDetectorRef,

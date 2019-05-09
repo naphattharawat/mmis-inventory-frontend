@@ -48,11 +48,6 @@ export class IssueService {
     return rs.json();
   }
 
-  async getProductList(issueId: any) {
-    const rs = await this.authHttp.get(`${this.url}/issues/product-list/${issueId}`).toPromise();
-    return rs.json();
-  }
-
   async getSummary(issueId: any) {
     const rs = await this.authHttp.get(`${this.url}/issues/info/summary?issueId=${issueId}`).toPromise();
     return rs.json();
@@ -73,21 +68,13 @@ export class IssueService {
     const rs = await this.authHttp.get(`${this.url}/issues/info/generics?issueId=${issueId}`).toPromise();
     return rs.json();
   }
-  async getProductIssues(id: any) {
-    const rs = await this.authHttp.get(`${this.url}/issues/product-list/${id}`).toPromise();
-    return rs.json();
 
-  }
-  async getIssues(issue_id: any) {
-    const rs = await this.authHttp.get(`${this.url}/issues/getissues/${issue_id}`).toPromise();
-    return rs.json();
-  }
   async getGenericList(issueId: any) {
     const rs = await this.authHttp.get(`${this.url}/issues/generic-list/${issueId}`).toPromise();
     return rs.json();
   }
   async getIssuesProduct(data: any) {
-    const rs = await this.authHttp.post(`${this.url}/generics/allocate`, {data: data}).toPromise();
+    const rs = await this.authHttp.post(`${this.url}/generics/allocate`, { data: data }).toPromise();
     return rs.json();
   }
   async getEditProductList(issueId: any) {
@@ -100,12 +87,12 @@ export class IssueService {
   }
 
   async checkApprove(username: any, password: any, action: any) {
-    let rs: any = await this.authHttp.post(`${this.url}/basic/checkApprove`, {
+    const rs: any = await this.authHttp.post(`${this.url}/basic/checkApprove`, {
       username: username,
       password: password,
       action: action
     }).toPromise();
     return rs.json();
   }
-  
+
 }
